@@ -1,0 +1,22 @@
+.container {
+    padding: 1rem;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .responsive-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .responsive-table th,
+  .responsive-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .responsive-table th {
+    background-color: #f2f2f2;
+  }
+  

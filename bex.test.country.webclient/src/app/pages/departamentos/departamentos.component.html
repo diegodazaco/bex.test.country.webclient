@@ -1,0 +1,33 @@
+<div class="container">
+    <h2>Gestión de Departamentos</h2>
+  
+    <div *ngIf="loading">Cargando...</div>
+
+    <button class="btn btn-primary" (click)="navegarACrear()">Crear Departamento</button>
+
+    <table *ngIf="!loading" class="table table-bordered table-hover mt-3 responsive-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Nombre País</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let departamento of departamentos">
+                <td>{{ departamento.departamentoId }}</td>
+                <td>{{ departamento.nombreDepartamento }}</td>
+                <td>{{ departamento.nombrePais }}</td>
+                <td>
+                <button class="btn btn-warning btn-sm me-2" (click)="navegarAEditar(departamento.departamentoId)">
+                    ✏️ Editar
+                </button>
+                <button class="btn btn-danger btn-sm" (click)="onDelete(departamento.departamentoId)">
+                    🗑️ Eliminar
+                </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  </div>

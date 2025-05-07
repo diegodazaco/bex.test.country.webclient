@@ -1,0 +1,25 @@
+<div class="container">
+    <h2>{{ paisId ? 'Editar' : 'Crear' }} País</h2>
+    <form [formGroup]="paisForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nombrePais">Nombre del País:</label>
+        <input
+          type="text"
+          id="nombrePais"
+          formControlName="nombrePais"
+          class="form-control"
+        />
+        <div
+          *ngIf="paisForm.controls['nombrePais'].touched && paisForm.controls['nombrePais'].invalid"
+          class="text-danger"
+        >
+          El nombre del país es obligatorio.
+        </div>
+      </div>
+  
+      <button type="submit" class="btn btn-primary mt-3">
+        {{ paisId ? 'Actualizar' : 'Crear' }}
+      </button>
+    </form>
+  </div>
+  

@@ -1,0 +1,33 @@
+<div class="container">
+    <h2>{{ ciudadId ? 'Editar' : 'Crear' }} Ciudad</h2>
+    <form [formGroup]="ciudadForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nombreCiudad">Nombre de la Ciudad:</label>
+        <input type="text" id="nombreCiudad" class="form-control" formControlName="nombreCiudad" />
+        <div *ngIf="ciudadForm.controls['nombreCiudad'].touched && ciudadForm.controls['nombreCiudad'].invalid" class="text-danger">
+            El nombre de la ciudad es obligatorio.
+        </div>
+      </div>
+  
+      <div class="form-group mt-3">
+        <label for="departamentoId">Departamento:</label>
+        <select id="departamentoId" class="form-control" formControlName="departamentoId">
+            <option value="">Seleccione un Departamento</option>
+            <option *ngFor="let dep of departamentos" [value]="dep.departamentoId">{{ dep.nombreDepartamento }}</option>
+        </select>
+        <div *ngIf="ciudadForm.controls['departamentoId'].touched && ciudadForm.controls['departamentoId'].invalid" class="text-danger">
+            Debe seleccionar un departamento.
+          </div>
+      </div>
+  
+      <div *ngIf="ciudadId" class="form-group mt-3">
+        <label for="nombrePais">País:</label>
+        <input type="text" id="nombrePais" class="form-control" style="background-color: #EBEBE4 ;" formControlName="nombrePais" readonly />
+      </div>
+  
+      <button type="submit" class="btn btn-primary mt-3">
+        {{ ciudadId ? 'Actualizar' : 'Crear' }}
+      </button>
+    </form>
+  </div>
+  

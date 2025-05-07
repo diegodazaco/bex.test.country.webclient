@@ -1,0 +1,35 @@
+<div class="container">
+    <h2>{{ departamentoId ? 'Editar' : 'Crear' }} Departamento</h2>
+    <form [formGroup]="departamentoForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nombreDepartamento">Nombre del Departamento:</label>
+        <input
+          type="text"
+          id="nombreDepartamento"
+          formControlName="nombreDepartamento"
+          class="form-control"
+        />
+        <div *ngIf="departamentoForm.controls['nombreDepartamento'].touched && departamentoForm.controls['nombreDepartamento'].invalid" class="text-danger">
+          El nombre del departamento es obligatorio.
+        </div>
+      </div>
+  
+      <div class="form-group mt-3">
+        <label for="paisId">País:</label>
+        <select formControlName="paisId" id="paisId" class="form-control">
+          <option value="">Seleccione un país</option>
+          <option *ngFor="let pais of paises" [value]="pais.paisId">
+            {{ pais.nombrePais }}
+          </option>
+        </select>
+        <div *ngIf="departamentoForm.controls['paisId'].touched && departamentoForm.controls['paisId'].invalid" class="text-danger">
+          Debe seleccionar un país.
+        </div>
+      </div>
+  
+      <button type="submit" class="btn btn-primary mt-3">
+        {{ departamentoId ? 'Actualizar' : 'Crear' }}
+      </button>
+    </form>
+  </div>
+  

@@ -1,0 +1,31 @@
+<div class="container">
+    <h2>Gestión de Países</h2>
+  
+    <div *ngIf="loading">Cargando...</div>
+
+    <button class="btn btn-primary" (click)="navegarACrear()">Crear País</button>
+
+    <table *ngIf="!loading" class="table table-bordered table-hover mt-3 responsive-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pais of paises">
+                <td>{{ pais.paisId }}</td>
+                <td>{{ pais.nombrePais }}</td>
+                <td>
+                <button class="btn btn-warning btn-sm me-2" (click)="navegarAEditar(pais.paisId)">
+                    ✏️ Editar
+                </button>
+                <button class="btn btn-danger btn-sm" (click)="onDelete(pais.paisId)">
+                    🗑️ Eliminar
+                </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
